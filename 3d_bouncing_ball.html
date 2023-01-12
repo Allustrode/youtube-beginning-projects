@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Ball Bounce</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background: linear-gradient(45deg, rgb(235, 138, 255), rgb(109, 0, 100));
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ball {
+            height: 10rem;
+            width: 10rem;
+            border-radius: 50%;
+            position: absolute;
+            top: 40%;
+            background: radial-gradient(rgb(248, 185, 255), rgb(193, 0, 252));
+            background-position: -1rem -3rem;
+            box-shadow: inset -20px -40px 60px rgb(100, 0, 131);
+            animation: bounce 2s infinite ease;
+        }
+
+        @keyframes bounce {
+            0% {
+                top: 40%;
+                height: 9rem;
+            }
+
+            50% {
+                top: 10%;
+                height: 10rem;
+            }
+
+            100% {
+                height: 9rem;
+                top: 40%;
+            }
+        }
+
+        .ball::before {
+            content: "";
+            height: 10rem;
+            width: 10rem;
+            border-radius: 50%;
+            position: fixed;
+            transform: translatey(50%) rotateX(80deg);
+            background: radial-gradient(rgba(0, 0, 0, 0.781), rgba(255, 255, 255, 0) 70%);
+            z-index: -2;
+            animation: shadow 2s infinite ease;
+        }
+
+        @keyframes shadow {
+            0% {
+                transform: translatey(40%) rotateX(80deg);
+
+            }
+
+            50% {
+                transform: translatey(146%) rotateX(80deg);
+            }
+
+            100% {
+                transform: translatey(40%) rotateX(80deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="ball"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            transition: .9s;
+            font-family: sans-serif;
+        }
+
+        .backg {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: space-evenly;
+            background-color: rgb(0, 0, 0);
+            overflow: hidden;
+        }
+
+        .backg span {
+            height: 0rem;
+            width: .6vw;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            background-color: rgb(255, 62, 62);
+            animation: color 2s linear infinite;
+            animation-play-state: paused;
+        }
+
+        button {
+            position: absolute;
+            align-self: center;
+            color: white;
+            padding: 1rem 4rem;
+            border-radius: 4rem;
+            font-size: 1.4rem;
+            border: none;
+            background-color: rgb(100, 100, 100);
+            user-select: none;
+            cursor: pointer;
+            transition: .4s;
+        }
+
+        button:hover {
+            opacity: .7;
+        }
+
+        @keyframes color {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="backg">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <button>PLAY</button>
+    </div>
+    <div class="main">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae corporis animi aliquam, magni facere
+            molestias voluptas quo ipsa quos illo est nisi ratione error, odio eum enim consequatur aspernatur
+            recusandae.
+            Assumenda, excepturi, repudiandae harum quia adipisci voluptates quidem aperiam quaerat, delectus veritatis
+            eius. In ex nisi harum, asperiores non inventore ratione cumque explicabo, corrupti ea amet q nisi tenetur,
+            libero voluptatum impedit ipsa! Quaerat ad quod deleniti libero minus necessitatibus molestiae ab eius saepe
+            ea. Natus, corporis tempora.
+            Voluptatibus eum voluptas doloribus inventore commodi atque, eveniet dolore. Necessitatibus odio quae
+            ratione vero assumenda commodi eaque? Nisi provident pariatur sunt, quam dolorum accusantium fuga atque
+            totam aspernatur, ipsam earum!
+            Excepturi, dolores fugiabo
+        </p>
+    </div>
+    <script>
+        let sp = document.querySelectorAll("span");
+        let btn = document.querySelector("button");
+        let set, p = 1;
+
+        btn.addEventListener("click", () => {
+
+            if (p == 1) {
+                btn.innerText = "STOP";
+                set = setInterval(fun1, 100);
+                p = 0;
+            }
+            else {
+                btn.innerText = "PLAY";
+                clearInterval(set);
+                p = 1;
+            }
+        });
+
+
+        function fun1() {
+            let no = Math.floor(Math.random() * (99 + 1));
+            let len = Math.floor(Math.random() * (20 - 2 + 1)) + 2;
+            sp[no].style.height = `${len}rem`;
+            sp[no].style.animationPlayState = "running";
+            setTimeout(() => {
+                sp[no].style.height = `0rem`;
+            }, 1000);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider button</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --shadow-be: inset 2px 2px 12px rgba(0, 0, 0, 0.556),
+                /* inset 5px -8px 14px rgb(122, 39, 0), */
+                inset -2px -2px 2px rgb(255, 255, 255);
+
+            --shadow-af: inset 2px 2px 2px rgba(0, 0, 0, 0.356),
+                inset 5px -8px 14px rgba(0, 0, 0, 0.438),
+                inset -2px -2px 2px rgb(255, 255, 255);
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background: linear-gradient(140deg, white, rgb(175, 175, 175));
+        }
+
+        .container {
+            height: 4rem;
+            width: 10rem;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 4rem;
+            background-color: rgb(221, 221, 221);
+            box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.356),
+                inset -2px -2px 2px rgb(255, 255, 255);
+        }
+
+        .container::before {
+            content: "";
+            height: 2rem;
+            width: 4rem;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-90%, -50%);
+            border-top-left-radius: 4rem;
+            border-bottom-left-radius: 4rem;
+            background-color: rgb(255, 97, 23);
+            box-shadow: var(--shadow-be);
+            transition: .4s cubic-bezier(0.31, 0.74, 0.7, 0.31);
+        }
+
+        .container::after {
+            content: "";
+            height: 2rem;
+            width: 4rem;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: -1;
+            transform: translate(-10%, -50%);
+            border-top-right-radius: 4rem;
+            border-bottom-right-radius: 4rem;
+            background-color: rgb(243, 243, 243);
+            box-shadow: var(--shadow-af);
+            transition: .4s cubic-bezier(0.31, 0.74, 0.7, 0.31);
+        }
+
+        #checkbox {
+            appearance: none;
+            height: 3rem;
+            width: 5rem;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-84%, -50%);
+            border-radius: 3rem;
+            background-color: rgb(255, 255, 255);
+            box-shadow: inset -5px -12px 10px rgba(0, 0, 0, 0.356),
+                8px 8px 14px rgba(0, 0, 0, 0.527);
+            transition: .4s cubic-bezier(0.31, 0.74, 0.7, 0.31);
+
+        }
+
+        #checkbox:checked {
+            transform: translate(-16%, -50%);
+        }
+
+        #checkbox::after {
+            content: "";
+            height: 2rem;
+            width: 1.8rem;
+            position: absolute;
+            left: 55%;
+            top: 50%;
+            transform: translate(0%, -50%);
+            border-radius: 50%;
+            background-color: rgb(255, 255, 255);
+            box-shadow: inset 5px 2px 10px rgba(0, 0, 0, 0.514);
+        }
+
+        #checkbox::before {
+            content: "";
+            height: 2rem;
+            width: 1.8rem;
+            position: absolute;
+            left: 10%;
+            top: 50%;
+            transform: translate(0%, -50%);
+            border-radius: 50%;
+            background-color: rgb(255, 255, 255);
+            box-shadow: inset 5px 2px 10px rgba(0, 0, 0, 0.281);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="checkbox" name="" id="checkbox">
+    </div>
+    <script>
+        let checkbox = document.getElementById("checkbox");
+        let on = 0;
+        checkbox.addEventListener('click', () => {
+            if (on == "0") {
+                document.documentElement.style.setProperty("--shadow-be", "inset 2px 2px 2px rgba(0, 0, 0, 0.356),inset 5px -8px 14px rgb(122, 39, 0),inset -2px -2px 2px rgb(255, 255, 255)");
+                document.documentElement.style.setProperty("--shadow-af", "inset 2px 2px 12px rgba(0, 0, 0, 0.756),inset 5px -8px 14px rgba(0, 0, 0, 0.438),inset -2px -2px 2px rgb(255, 255, 255)");
+                on = 1;
+            }
+            else {
+                document.documentElement.style.setProperty("--shadow-be", "inset 2px 2px 12px rgba(0, 0, 0, 0.756),inset 5px -8px 14px rgb(122, 39, 0),inset -2px -2px 2px rgb(255, 255, 255)");
+                document.documentElement.style.setProperty("--shadow-af", "inset 2px 2px 2px rgba(0, 0, 0, 0.356),inset 5px -8px 14px rgba(0, 0, 0, 0.438),inset -2px -2px 2px rgb(255, 255, 255)");
+                on = 0;
+            }
+        })
+    </script>
+</body>
+
+</html>

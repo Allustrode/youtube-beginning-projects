@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            background-color: rgb(10, 0, 29);
+            overflow: hidden;
+        }
+
+        .snow {
+            height: .7rem;
+            width: .7rem;
+            left: 0%;
+            top: -5%;
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgb(255, 255, 255);
+            animation: fall 4s infinite linear;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -5%;
+                opacity: .7;
+            }
+
+            10% {
+                opacity: .4;
+            }
+
+            20% {
+                opacity: .9;
+            }
+
+            40% {
+                opacity: .3;
+            }
+
+            50% {
+                opacity: .7;
+            }
+
+            60% {
+                opacity: .1;
+            }
+
+            80% {
+                opacity: .0;
+            }
+
+            90% {
+                opacity: .4;
+            }
+
+            100% {
+                top: 100%;
+                opacity: .8;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+
+    <script>
+        let con = document.querySelector(".container");
+        for (let i = 0; i < 100; i++) {
+            let snow = document.createElement("span");
+            snow.classList.add("snow");
+            con.appendChild(snow);
+        }
+        let snow = document.querySelectorAll(".snow");
+        for (let i = 0; i < 100; i++) {
+            let tr = Math.floor(Math.random(100 - 0 + 1) * 100) - 0;
+            let hw = Math.floor(Math.random(100 - 0 + 1) * 100) - 0;
+            let delay = Math.floor(Math.random(100 - 0 + 1) * 100) - 0;
+            snow[i].style.transform = `translateX(${tr}rem)`;
+            snow[i].style.height = `.${hw * 7}rem`;
+            snow[i].style.width = `.${hw * 7}rem`;
+            snow[i].style.opacity = `.${tr * 7}`;
+            snow[i].style.animationDelay = `${delay * .4}s`;
+            snow[i].style.animationDuration = `${hw * .1 + 3}s`;
+        }
+    </script>
+</body>
+
+</html>
